@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>测试 v-model</p>
+    <br>
+    <p>原始文本信息{{message}}</p>
+    <h3>文本框</h3>
+    <p>v-model<input type="text" v-model="message"></p>
+    <p>v-model.lazy<input type="text" v-model.lazy="message"></p>
+    <p>v-model.number<input type="text" v-model.number="message"> 先输入数字 再输入字符串则不双向绑定</p>
+    <p>v-model.trim<input type="text" v-model.trim="message"></p>
+    <h2>文本域</h2>
+    <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
+    <h2>多选框绑定一个值</h2>
+    <input type="checkbox" id="isTrue" v-model="isTrue">
+    <label for="isTrue">{{isTrue}}</label>
+    <h2>多选框绑数组</h2>
+    <input type="checkbox" id="bianhua" value="bianhua" v-model="web_names">
+    <label for="bianhua">bianhau</label>
+    <input type="checkbox" id="manzhu" value="manzhu" v-model="web_names">
+    <label for="bianhua">manzhu</label>
+    <input type="checkbox" id="shahuas" value="shahuas" v-model="web_names">
+    <label for="bianhua">shahuas</label>
+    <br>
+    <p>选中的人是：{{web_names}}</p>
+
+    <h2>单选框绑定数组</h2>
+    <input type="radio" id="nan" value="男" v-model="sex">
+    <label for="nan">男</label>
+    <input type="radio" id="nv" value="女" v-model="sex">
+    <label for="nv">女</label>
+    <p>性别：{{sex}}</p>
+</div>
+</body>
+<script type="text/javascript">
+    //lazy:懒加载  也是可以实现双向绑定的  但是是在鼠标离开input框的时候才会改变
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world',
+            isTrue: true,
+            web_names: [],
+            sex:'请选择'
+        },
+        methods: {}
+
+    })
+
+</script>
+</html>

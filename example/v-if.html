@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if&v-else&v-show</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+
+<h1>v-if&v-else&v-show</h1>
+<hr>
+<div id="app">
+    <!--v-if----------- 判断是否加载-->
+    <div v-if="isLogin">你好 哈哈</div>
+    <div v-else="isLogin">您还未登录</div>
+
+    <!--v-show ------------ 调整的是  css的属性 --->
+    <div v-show="isLogin">嗨</div>
+
+</div>
+
+
+
+</body>
+<script type="">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isLogin:false,
+            isPass:false
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>测试 v-on</p>
+    <br>
+    <div>
+        本场比赛得分:{{cord}}
+        <p>
+            <button v-on:click="increase()">加分</button>
+            <button @click="decrease()">减分</button>
+            <br>
+            <br>
+            <input type="text" v-on:keyup.enter="onEnter()" v-model="fenshu2">
+        </p>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            cord: 0,
+            fenshu2: 0
+        },
+        methods: {
+            increase: function () {
+                this.cord++;
+            },
+            decrease: function () {
+                if (this.cord === 0) {
+                    alert('您已经是零分了');
+                    return;
+                }
+                this.cord--;
+            },
+            onEnter: function () {
+                this.cord += parseInt(this.fenshu2);
+            }
+        }
+
+    })
+
+</script>
+</html>

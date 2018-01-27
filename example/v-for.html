@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in getItems">{{item}}</li>
+    </ul>
+
+    <ul>
+        <li v-for="(student,index) in sortStudent">
+            {{index}}---{{student.name}}--------{{student.age}}
+        </li>
+    </ul>
+</div>
+</body>
+<script>
+    //v-for ***** 哪个标签循环 写在哪个标签上面
+    var app = new Vue({
+        el: '#app',
+        data: {
+            items: [32, 45, 4, 56, 4, 22, 20],
+            students: [
+                {name: 'jspang', age: 33},
+                {name: 'niuniu', age: 26},
+                {name: 'lala', age: 22},
+                {name: 'king', age: 12}
+            ]
+        },
+        //在输出item之前进行编程
+        computed: {
+            getItems: function () {
+                return this.items.sort(sortNumber);
+            },
+            sortStudent: function () {
+                return sortByKey(this.students,'age')
+            }
+        }
+    });
+    //自定义一个方法  传入到sort中
+    function sortNumber(a, b) {
+        return a - b
+    }
+
+    function sortByKey(array, key) {
+        return array.sort(function (a, b) {
+            var x = a[key];
+            var y = b[key];
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        })
+    }
+</script>
+</html>
