@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>自定义指令</h1>
+<hr>
+<div id="app">
+    <p v-jspang="color">{{num}}</p>
+    <button @click="add()">ADD</button>
+</div>
+
+</body>
+<script type="">
+    Vue.directive('jspang',function (el,binding) {
+        /*console.log(el);//el:DOM元素
+        console.log(binding);//binding:对象
+        console.log(binding.name);
+        console.log(binding.value);
+        console.log(binding.expression);*/
+        el.style="color:"+binding.value
+    });
+    //钩子函数
+    //1、bind 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个绑定时执行一次的初始化动作
+    //2、insert 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于document中）
+    //3、update
+    //4、componentUpdate
+    //4、unbind
+    var app = new Vue({
+        el: '#app',
+        data: {
+            num: '10',
+            color:'red'
+        },
+        methods: {
+            add: function () {
+                this.num++;
+            }
+        }
+    })
+</script>
+</html>
