@@ -8,6 +8,9 @@
     <title>vue.js实例</title>
 </head>
 <style type="text/css">
+    ul ,li{
+        list-style: none;
+    }
     .ol1 a{
         color: #069800;
     }
@@ -18,7 +21,8 @@
 <body>
 <h2>vue2.0实例</h2>
 <hr>
-<ol class="ol1">
+<ul class="ol1">
+    <li><h2>第一季：内部指令</h2></li>
     <li>
         <a href="./example/helloWorld.html">hello world</a><br>
         <a href="./example/v-if.html">v-if & v-else & v-show</a><br>
@@ -29,8 +33,9 @@
         <a href="./example/v-model.html">v-model</a><br>
         <a href="./example/others.html">others</a><br>
     </li>
-</ol>
-<ol class="ol2">
+</ul>
+<ul class="ol2">
+    <li><h2>第二季：全局API</h2></li>
     <li>
         <a href="api/directive.html">自定义指令</a><br>
         <a href="api/extend.html">extend</a><br>
@@ -43,7 +48,13 @@
         <a href="api/组件4.html">组件-4</a><br>
         <a href="api/component标签.html">component标签</a><br>
     </li>
-</ol>
+</ul>
+<ul class="ol2">
+    <li><h2>第三季:构造器里面的选项</h2></li>
+    <li>
+        <a href="选项/propsData.html">propsData</a><br>
+    </li>
+</ul>
 </body>
 <script>
     // npm install -g live-server --------------  live-server是一个服务

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+
+<h1>propsData</h1>
+<hr>
+<div id="app">
+    <!--<header></header>-->
+
+    <content></content>
+</div>
+
+
+</body>
+<!--<script type="">
+    var header = Vue.extend({
+        template: `<p>{{message}}---{{a}}</p>`,
+        data:function () {
+            return {
+                message:"I'm is China"
+            }
+        },
+        props:['a']
+    });
+    new header({propsData:{a:15555}}).$mount('header')
+</script>-->
+<script type="text/javascript">
+    var content =Vue.extend({
+        template:`<div style="color:red">{{message}}-----{{a}}</div>`,
+        data:function () {
+            return {
+                message:'你好'
+            }
+        },
+        props:['a']
+    });
+    new content({propsData:{a:343}}).$mount('content')
+</script>
+</html>
