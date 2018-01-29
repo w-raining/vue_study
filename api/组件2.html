@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件2 props属性设置</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+
+<h1>组件2--props属性设置</h1>
+<hr>
+<div id="app">
+    <p>不支持用   data-form  中间的小斜线 <br>
+        用驼峰式写法</p>
+    <panda v-bind:here="message"></panda>
+</div>
+
+
+
+</body>
+<script type="">
+    var app = new Vue({
+        el: '#app',
+        data:{
+          message:'china'
+        },
+        components:{
+            'panda':{
+                template:'<div style="color: red;">Panda from {{here}}</div>',
+                props:['here']
+            }
+        }
+    })
+</script>
+</html>
