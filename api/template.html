@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>template模板</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+
+<h1>template</h1>
+<hr>
+<div id="app">
+
+</div>
+<template id="haha">
+    <h2>我是template标签模板</h2>
+</template>
+<script type="x-template" id="lala">
+    <h3>我是script标签模板</h3>
+</script>
+
+
+</body>
+<script type="">
+    var app = new Vue({
+        el: '#app',
+        data: {},
+        //方法1 建模板
+//        template:`
+//            <h4 style="color: red;">我是选项模板</h4>
+//        `,
+
+        //方法2
+//        template: "#haha"  //template里面不能是空的  必须要有标签的
+
+        //方法3
+        template: "#lala"  //template里面不能是空的  必须要有标签的
+
+    })
+</script>
+</html>
