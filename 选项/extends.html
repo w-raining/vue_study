@@ -15,20 +15,44 @@
 <hr>
 
 <div id="app">
-    
-    <button @click="add()">add</button>
+    num:${ num }
+    <p>
+        <button @click="add()">add</button>
+    </p>
 </div>
-<br>
 
 
 </body>
 <script type="text/javascript">
+    var extendsObj = {
+        updated: function () {
+            console.log('我是扩展的updated')
+        },
+        methods: {
+            //方法名字 如果一样 则只执行原生里面的方法
+            add: function () {
+                this.num++;
+                console.log('我是扩展出来的方法')
+            }
+        }
+    };
     var app = new Vue({
         el: '#app',
         data: {
-            num: 2
+            num: 1
         },
-        methods: {},
+        methods: {
+            add: function () {
+                this.num++;
+                console.log('我是原生的方法')
+            }
+        },
+        updated: function () {
+            console.log('我是原生的updated')
+        },
+        extends: extendsObj,
+        delimiters:['${','}']  //自定义插值形式
+
     })
 </script>
 </html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>slot练习</h3>
+    <hr>
+    <jspang>
+        <span slot="blogUrl">{{jspangData.blogUrl}}</span>
+        <span slot="netName">{{jspangData.netName}}</span>
+        <span slot="skill">{{jspangData.skill}}</span>
+    </jspang>
+</div>
+<template id="tmp">
+    <div>
+        <p>博客地址：<slot name="blogUrl"></slot></p>
+        <p>网名：<slot name="netName"></slot></p>
+        <p>技能：<slot name="skill"></slot></p>
+    </div>
+</template>
+
+</body>
+<script type="text/javascript">
+    var jspang = {
+        template: '#tmp'
+    };
+    var app = new Vue({
+        el: '#app',
+        data: {
+            jspangData: {
+                blogUrl: 'http://jspang.com',
+                netName: 'jspang',
+                skill: 'web前端'
+            }
+        },
+        components: {
+            'jspang': jspang
+        }
+    })
+
+</script>
+</html>

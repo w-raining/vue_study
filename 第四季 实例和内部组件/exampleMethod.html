@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>exampleEvent</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>exampleEvent</h3>
+    <hr>
+    <button @click="add()">add</button>
+    <p>num:{{num}}</p>
+</div>
+<button onclick="reduce()">reduce</button>
+<button onclick="reduceOnce()">只减一次</button>
+<button onclick="off()">关闭某个事件</button>
+</body>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            num: 1
+        },
+        methods: {
+            add: function () {
+                this.num++
+            }
+        }
+    });
+    //$on  这个方法一直可以调用
+    app.$on('reduce', function () {
+        console.log('执行了reduce方法');
+        this.num--
+    });
+    function reduce() {
+        app.$emit('reduce')
+    }
+
+    //once只能执行一次
+    app.$once('reduceOnce', function () {
+        console.log('只执行一次');
+        this.num -= 5
+    });
+    function reduceOnce() {
+        app.$emit('reduceOnce')
+    }
+
+    //事件关闭
+    function off() {
+        app.$off('reduce')
+    }
+</script>
+</html>
