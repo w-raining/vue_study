@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch选项</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+
+<h1>watch选项</h1>
+<hr>
+<div id="app">
+    <p>今日温度: {{temperature}}</p>
+    <p>穿衣指数: {{clothes}}</p>
+    <div>
+        <button @click="add()">增加温度</button>
+        <button @click="decrease()">降低温度</button>
+    </div>
+</div>
+<br>
+
+</body>
+<script type="text/javascript">
+    var clothes = ['短袖短裙', '夹克长裙', '羽绒衣'];
+    //watch :监控数据变化
+    var app = new Vue({
+        el: '#app',
+        data: {
+            temperature: 14,
+            clothes: '夹克长裙'
+        },
+        methods: {
+            add: function () {
+                this.temperature += 5;
+            },
+            decrease: function () {
+                this.temperature -= 5;
+            },
+        },
+        //watch:监控数据的变化 传两个参数
+//        watch: {
+//            temperature: function (newVal, oldVal) {
+//                if (newVal >= 26) {
+//                    this.clothes = clothes[0];
+//                } else if (newVal < 26 && newVal > 0) {
+//                    this.clothes = clothes[1];
+//                } else {
+//                    this.clothes = clothes[2]
+//                }
+//            }
+//        }
+    });
+
+    app.$watch('temperature',function (newVal,oldVal) {
+        if (newVal >= 26) {
+            this.clothes = clothes[0];
+        } else if (newVal < 26 && newVal > 0) {
+            this.clothes = clothes[1];
+        } else {
+            this.clothes = clothes[2]
+        }
+    })
+
+</script>
+</html>

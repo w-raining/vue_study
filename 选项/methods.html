@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+
+<h1>methods</h1>
+<hr>
+<div id="app">
+    <p>{{num}}</p>
+    <p>
+        $event 和原生的mouseevent是一样的
+        <button @click="add(2,$event)">add</button>
+    </p>
+    <btn @click.native="add(6)"></btn>
+</div>
+    <br>
+<button onclick="app.add(3)">外部add增加</button>
+
+</body>
+<script type="text/javascript">
+    //native给组件绑定构造器里面的原生事件
+    var btn = {
+        template: '<button>组件ADD</button>'
+    };
+
+
+    //组件声明必须要进行挂载
+    var app = new Vue({
+        el: '#app',
+        data: {
+            num: 0
+        },
+        methods: {
+            add: function (a) {
+                if (a !== 0) {
+                    this.num += a;
+                } else {
+                    this.num++
+                }
+            }
+        },
+        components: {
+            "btn": btn
+        }
+    })
+</script>
+</html>

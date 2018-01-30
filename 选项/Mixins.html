@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mixins</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+
+<h1>Mixins</h1>
+<hr>
+
+
+<p>混入  Mixins一般有两种用途：
+    <br>
+    <br>
+    1、在你已经写好了构造器后，需要增加方法或者临时的活动时使用的方法，这时用混入会减少源代码的污染。
+    <br>
+    2、很多地方都会用到的公用方法，用混入的方法可以减少代码量，实现代码重用。</p>
+<div id="app">
+    <p>num:{{num}}</p>
+    <button @click="add()">add</button>
+</div>
+<br>
+
+
+</body>
+<script type="text/javascript">
+    //全局API的混入方式
+    Vue.mixin({
+        updated:function () {
+            console.log("我是全局的混入")  //最先执行
+        }
+    });
+    var addConsole = {
+        updated:function () {
+            console.log("数字发生变化")
+        }
+    };
+    var app = new Vue({
+        el: '#app',
+        data: {
+            num: 2
+        },
+        methods: {
+            add: function () {
+                this.num++
+            }
+        },
+        updated:function () {
+          console.log('我是原生的updated')   //原生的最后执行
+        },
+        mixins:[addConsole]  //混入的先执行  原生的后执行
+
+    })
+</script>
+</html>
