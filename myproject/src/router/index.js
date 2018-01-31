@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Hi from '@/components/Hi'
 import Hi1 from '@/components/Hi1'
 import Hi2 from '@/components/Hi2'
+import params from '@/components/params'
+import chongdingxiang from '@/components/chongdingxiang'
 
 Vue.use(Router)
 
@@ -15,13 +17,26 @@ export default new Router({
             component: HelloWorld
         },
         {
+            path: '/hi1',
+            name: 'hi1',
+            component: Hi1
+        },
+        {
             path: '/hi',
-            component: Hi,
-            children:[   //子路由
-                {path:'/',component:Hi},
-                {path:'hi1',component:Hi1},
-                {path:'hi2',component:Hi2},
-            ]
+            components: {
+                default: HelloWorld,
+                left: Hi1,
+                right: Hi2
+            }
+        },
+        {
+            path: '/params/:newsId(\\d+)/:newsTitle',
+            component: params
+        },
+        {
+            path:'/chongdingxiang',
+            redirect:'/'
         }
+
     ]
 })
